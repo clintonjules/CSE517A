@@ -17,5 +17,11 @@ def ridge(w,xTr,yTr,lambdaa):
 # [d,n]=size(xTr);
 
     # YOUR CODE HERE
+    multiply_matrix = (np.matmul(w.T, xTr) - yTr)
 
-    return loss,gradient
+    loss = np.matmul(multiply_matrix, multiply_matrix.T) + lambdaa * np.matmul(w.T, w)
+
+    gradient = np.matmul(xTr, multiply_matrix.T) + lambdaa * w
+    gradient = 2 * gradient
+
+    return loss, gradient

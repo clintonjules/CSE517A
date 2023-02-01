@@ -1,5 +1,5 @@
 
-
+import numpy as np
 def linearmodel(w,xTe):
 # INPUT:
 # w weight vector (default w=0)
@@ -11,4 +11,4 @@ def linearmodel(w,xTe):
 
     # YOUR CODE HERE
 
-    return preds
+    return np.matmul(w.T,xTe)

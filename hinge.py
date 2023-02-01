@@ -18,5 +18,12 @@ def hinge(w,xTr,yTr,lambdaa):
 
 
     # YOUR CODE HERE
+    hinge_mat = yTr * np.matmul(w.T, xTr)
 
-    return loss,gradient
+    loss = maximum(0, 1 - hinge_mat)
+    loss = np.sum(loss) + lambdaa * np.matmul(w.T,w)
+    
+    gradient = np.where(hinge_mat > 1, 0, yTr)
+    gradient = 0 - np.matmul(xTr, gradient.T) + 2 * lambdaa * w
+
+    return loss, gradient

@@ -20,7 +20,7 @@ def grdescent(func,w0,stepsize,maxiter,tolerance=1e-02):
     for i in range(maxiter):
         new_loss, gradient = f(w)
 
-        if np.norm(gradient) >= tolerance:
+        if np.linalg.norm(gradient) >= tolerance:
             if new_loss < loss:
                 stepsize = stepsize * 1.01
             else:

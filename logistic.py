@@ -18,5 +18,10 @@ import numpy as np
 def logistic(w,xTr,yTr):
 
     # YOUR CODE HERE
+    log_mat = np.matmul(w.T, xTr) * yTr
+    
+    loss = np.sum(np.log(1 + np.exp(-log_mat)))
+    
+    gradient = 0 - np.matmul(xTr, (1/(1 + np.exp(log_mat)) * yTr).T)
 
-    return loss,gradient
+    return loss, gradient

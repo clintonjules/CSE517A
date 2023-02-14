@@ -33,6 +33,11 @@ def naivebayesCL(x, y):
     
 # =============================================================================
 # fill in code here
+    pos_y, neg_y = naivebayesPY(x,y)
+    pos_xy, neg_xy = naivebayesPXY(x,y)
     
+    b = np.log(pos_y) - np.log(neg_y)
+    w = np.log(pos_xy) - np.log(neg_xy)
+
     return w,b
 # =============================================================================

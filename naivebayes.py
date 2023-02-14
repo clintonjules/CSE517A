@@ -35,5 +35,5 @@ def naivebayes(x, y, x1):
 # =============================================================================
 # fill in code here
     
-    return logratio
+    return np.log(naivebayesPY(x,y)[0]) - np.log(naivebayesPY(x,y)[1]) + np.matmul(x1.T, np.log(naivebayesPXY(x,y)[0])) - np.matmul(x1.T, np.log(naivebayesPXY(x,y)[1]))
 # =============================================================================

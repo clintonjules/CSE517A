@@ -39,5 +39,15 @@ def naivebayesPY(x, y):
     d,n = Xnew.shape
     
     ## fill in code here
+    pos_numerator, neg_numerator = 0, 0
     
+    for i in range(n):
+        if Ynew[0,i] == 1:
+            pos_numerator += 1
+        if Ynew[0,i] == -1:
+            neg_numerator += 1
+    
+    pos = pos_numerator / n
+    neg = neg_numerator / n
+
     return pos,neg

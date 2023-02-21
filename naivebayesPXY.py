@@ -51,18 +51,31 @@ def naivebayesPXY(x, y):
 # =============================================================================
 # fill in code here
 
-    posprob, negprob = 0, 0
-    n_pos, n_neg = 0, 0
-    
-    for i in range(n):
-        if Ynew[0,i] == 1:
-            n_pos += Xnew[:,i]
-        if Ynew[0,i] == -1:
-            n_neg += Xnew[:,i]
-    
-    posprob = n_pos / np.sum(n_pos)
-    negprob = n_neg / np.sum(n_neg)
+    pos_dim = np.zeros([d, 1])
+    neg_dim = np.zeros([d, 1])
+    n_pos = 0
+    n_neg = 0
 
+    for a in range(d):
+        for i in range(n):
+            if Ynew[:, i] == 1: 
+                pos_dim[a, :] += Xnew[a, i]
+
+            if Ynew[:, i] == -1: 
+                neg_dim[a, :] += Xnew[a, i]
+
+    point_sum = np.sum(Xnew, axis = 0)
+
+    for i in range(n):
+        if Ynew[:, i] == 1:
+            n_pos += point_sum[:, i]
+        if Ynew[:, i] == -1:
+            n_neg += point_sum[:, i]
+
+
+    posprob = pos_dim / n_pos
+    negprob = neg_dim / n_neg
+    
     return posprob,negprob
 
 # =============================================================================

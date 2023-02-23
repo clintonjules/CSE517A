@@ -25,6 +25,11 @@ def computeK(kernel_type, X, Z, kpar):
     K = np.zeros((n,m))
     
     # YOUR CODE HERE
+    if kernel_type == 'linear':
+        return np.dot(np.transpose(X), Z)
 
-    
-    return K
+    if kernel_type == 'poly':
+        return (np.dot(np.transpose(X), Z) + 1 ) ** kpar
+
+    if kernel_type == 'rbf':
+        return np.exp(-kpar * (l2distance(X,Z) ** 2))

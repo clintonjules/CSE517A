@@ -18,7 +18,15 @@ def generateQP(K, yTr, C):
     n = yTr.shape[0]
     
     # YOUR CODE HERE
+    Q = np.dot(yTr, yTr.T) * K
+    p = (-1) * np.ones([n,1]) 
 
+    I = np.identity(n)
+    G = np.vstack((I, (-1) * I))
+    h = np.vstack((C * np.ones([n,1]), np.zeros([n,1])))
+    
+    A = yTr.T
+    b = np.double(0)
             
     return Q, p, G, h, A, b
 

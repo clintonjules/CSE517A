@@ -23,8 +23,14 @@ def l2distance(X,Z):
     D = np.zeros((n, m))
     
     # YOUR CODE HERE
-    X_dot = (X*X).sum(axis=1).reshape((m,1))*np.ones(shape=(1,n))
-    Z_dot = (Z*Z).sum(axis=1)*np.ones(shape=(m,1))
-    D =  X_dot + Z_dot -2*X.dot(Z.T)
+    x_dot_z = 2 * np.dot(np.transpose(X),Z)
+    x_dot_x = np.reshape(np.sum(X*X, axis = 0),(-1,1))
+    z_dot_z = np.reshape(np.sum(Z*Z, axis = 0),(1,-1))
+    
+    dist = np.tile(x_dot_x,m) + np.transpose(np.tile(z_dot_z.T, n)) - x_dot_z
+    
+    dist[dist < 0] = 0
+
+    D = np.sqrt(dist)
     
     return D

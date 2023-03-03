@@ -21,7 +21,7 @@ def recoverBias(K,yTr,alphas,C):
     margin = np.abs(C - 2 * alphas)
     minmargin = min(margin)
 
-    index = margin.index(minmargin)
+    index = np.where(margin == minmargin)[0][0]
     
     return yTr[index] - np.dot(K[index,:], (yTr * alphas))
     

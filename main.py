@@ -44,14 +44,14 @@ pickle.dump(best_parameters, open('best_parameters.pickle', 'wb'))
 # Don't forget to commit best_parameters.pickle!
 
 # Plot the performance of different parameters (this looks better with more parameter choices)
-# x,y = np.array(np.meshgrid(Cs, Ps))
-# plt.contourf(x, y, errors)
-# plt.colorbar()
-# plt.xlabel('C')
-# plt.ylabel('P')
+x,y = np.array(np.meshgrid(Cs, Ps))
+plt.contourf(x, y, errors)
+plt.colorbar()
+plt.xlabel('C')
+plt.ylabel('P')
 
 # Visualize the best decision boundary on the training set
-# best_classifier = trainsvm(xTr, yTr, bestC, 'rbf', bestP)
-# visdecision(xTr, yTr, best_classifier)
+best_classifier = trainsvm(xTr, yTr, bestC, 'rbf', bestP)
+visdecision(xTr, yTr, best_classifier)
 
 plt.show()

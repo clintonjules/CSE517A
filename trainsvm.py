@@ -28,7 +28,7 @@ def trainsvm(xTr,yTr, C, ktype, P):
     n = yTr.shape[0]
 
     #print("Solve QP...")
-    sol = solve_qp(Q, p.reshape((n,)), G, h.reshape((2*n,)), A.reshape((n,)), b.reshape((1,)), solver="cvxopt")
+    sol = solve_qp(Q, p.reshape((n,)), G, h.reshape((2*n,)), A.reshape((n,)), b.reshape((1,)), solver="ecos")
     alphas = np.array(sol.reshape((sol.shape[0], 1)))
 
     #print("Recovering bias")

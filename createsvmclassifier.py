@@ -20,8 +20,9 @@ from computeK import computeK
 def createsvmclassifier(xTr, yTr, alphas, bias, ktype, kpar):
     # classifier that returns all ones
     def svmclassify(xTe):
-        d,n = xTe.shape
-        return np.ones((n,1))
+        k = computeK(ktype, xTe, xTr, kpar)
+        
+        return np.sign(np.dot(k, (yTr * alphas)) + bias)
         
     # YOUR CODE HERE
 

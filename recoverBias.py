@@ -15,10 +15,13 @@ Solves for the hyperplane bias term, which is uniquely specified by the support 
 import numpy as np
 
 def recoverBias(K,yTr,alphas,C):
-    bias = 0
-    
-    # YOUR CODE HERE
+    index = 0
 
+    # YOUR CODE HERE
+    margin = np.abs(C - 2 * alphas)
+    minmargin = min(margin)
+
+    index = margin.index(minmargin)
     
-    return bias 
+    return yTr[index] - np.dot(K[index,:], (yTr * alphas))
     

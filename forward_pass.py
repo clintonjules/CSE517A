@@ -29,9 +29,12 @@ def forward_pass(W, xTr, trans_func):
     # Do the forward process here
     for i in range(len(W)-1, -1, -1):
         # INSERT CODE
+        aas[i] = np.matmul(W[i],zzs[i+1])
+        zzs[i] = np.vstack((trans_func(aas[i]),np.ones([1, n])))
 
         
     # INSERT CODE: (last one is special, no transition function)
-
+    aas[0] = np.matmul(W[0],zzs[1])
+    zzs[0] = aas[0]
     
     return aas, zzs

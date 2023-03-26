@@ -27,7 +27,9 @@ def backprop(W, aas,zzs, yTr,  trans_func_der):
     gradient = [None] * len(W)
     for i in range(len(W)):
     	# INSERT CODE HERE:
-        pass
+        gradient[i] = np.matmul(np.transpose(delta,zzs[i+1]))/n
+
+        delta = np.multiply(trans_func_der(aas[i+1]), np.matmul(np.transpose(W[i][:,:-1]),delta))
 
     return gradient 
 

@@ -21,7 +21,6 @@ def compute_loss(zzs, yTr):
     n = np.shape(yTr)[1]
     loss = 0
     #% INSERT CODE HERE:
-    # loss = np.sum(np.power(delta,2))/n/2
-    loss = (1/2)*np.mean(np.linalg.norm(delta)**2)
+    loss = np.sum(np.power(delta,2))/n/2
     
     return loss

@@ -1,0 +1,100 @@
+<div class="description user_content ">
+    <p>Throughout the Final Project assignments, you will be working in-depth with a modified version of a real-life
+        dataset. The modified dataset describes a control problem, namely the task of controlling a robot. There are 40
+        features (continuous) that describe the status of the robot, and the target value (continuous) describes the
+        appropriate action corresponding to the feature.&nbsp;</p>
+    <p>The final project will be comprised of three milestones and a final project report. In Milestone 1 (due 11/18),
+        you will do basic data exploration and compare a few baseline models. In Milestone 2 (due 12/2), you will work
+        on data preprocessing to improve model performance. In Milestone 3 (due 12/9), you will choose a specific model
+        and tune its hyperparameters to successfully train your own machine learning model and compete with other
+        students in a classroom Kaggle competition. Each milestone will have a corresponding report you must submit, and
+        these reports comprise your final project report.&nbsp;</p>
+    <p>In Milestone 2 of the final project, you will look deeper into the data, hoping to get some insight and even
+        improve your dataset before using it to train a machine learning model. Data preprocessing and feature
+        engineering is perhaps the most overlooked part of a machine learning project, but it's important to understand
+        that a machine learning model is only as good as the data it is given!</p>
+    <p><strong>Data Preprocessing (10 points)</strong></p>
+    <p>One step we must always take is to "clean" the data. Oftentimes, data have noise, errors, missing values, etc.
+        that may hinder learning. Another reason we want to preprocess our data is to rescale our features into similar
+        ranges.</p>
+    <ul>
+        <li>Try to find any errors or missing values that may be in our data. If there are any, correct them by your
+            method of choice. If there aren't any, skip this step.</li>
+        <li>Consider models that learn with gradient descent-based methods. Why would we want to rescale our data in
+            this case?</li>
+        <li>Consider models that perform regularization according to the norm of the parameters. Why would we want to
+            rescale our data in this case?</li>
+        <li>Consider models that learn according to distance measures (SVM, k-nearest neighbors, etc.). Why would we
+            want to rescale our data in this case?</li>
+        <li>Choose one model that you used from Milestone 1. Perform standardization or normalization on your data. Now
+            train the model on standardized or normalized data with k cross-validation and compare the performances
+            (both in-sample and out-sample) between before and after standardization or normalization using a paired
+            t-test. You may choose just one between standardization and normalization. You don't have to explain your
+            choice.</li>
+        <li>(Optional) What are some other preprocessing methods other than standardization or normalization you can
+            use? If you have any ideas, use them instead of standardization! Make sure you explain your decision.</li>
+    </ul>
+    <p>After standardizing or normalizing the data, keep it as such for the next steps!</p>
+    <p><strong>Feature Selection (10 points)</strong></p>
+    <p>Note that each of our data points lies in a very high-dimensional space with 40 features. If these features are
+        all vital to learning the underlying function that determines the latent target variable, then it would make
+        sense to use all of them. However, this is often not the case. We'll use our analysis from Milestone 1 to see
+        which features we might want to discard and which features we want to keep. This process is
+        called&nbsp;<em>feature selection.</em></p>
+    <ul>
+        <li>First, briefly explain an advantage and a disadvantage of our data having many features. Why might we want
+            to use only a subset of the features?</li>
+        <li>Recall the statistics and KDE of each feature from Milestone 1. Based on these results, what are some
+            features (at least 3) you might want to discard? Explain your decision for each feature you wish to discard.
+            If there aren't any, explain why.&nbsp;</li>
+        <li>Recall the correlation between each feature and the target from Milestone 1. Based on these results, what
+            are some features you might want to keep (at least 1) and some you might want to discard (at least 1)?
+            Explain your decision for each feature you wish to either discard or keep.&nbsp;</li>
+        <li>Recall the correlation between each of the features from Milestone 1. Based on these results, find pairs of
+            features (at least 1) from which you might want to only select one. Explain your decision for the pair you
+            have chosen. Choose one of the features to keep and one of the features to discard, and explain your
+            decision.&nbsp;</li>
+    </ul>
+    <p>You may or may not keep the decisions you made in this step for the following steps.&nbsp;</p>
+    <p><strong>Clustering (10 points)</strong></p>
+    <p>Notice that in the previous section, we are simply selecting from the features we are given. However, in feature
+        engineering, we may create new features from our insight into the data. One method we'll look at is k-means
+        clustering.</p>
+    <ul>
+        <li>Perform k-means clustering on the data with all features, using k=2, and plot a scatter plot of your result,
+            where each axis corresponds to the points' distance from the cluster centers, and the points use either
+            size, shape, or color to illustrate the target value. Use a linear regression model to predict target, using
+            the distances from cluster centers as your features. Was the clustering informative? Explain why it is or is
+            not.</li>
+        <li>Try different values of k and recluster, using the resulting features as predictors in a linear regression
+            model. Larger k means more features, which should result in better predictions, but it can also result in
+            unnecessarily complex predictor models and overfitting to the training data. How would you pick the most
+            informative k? Decide how you could use this information in terms of feature engineering your data, and
+            explain your decision.</li>
+    </ul>
+    <p>You may or may not keep the decisions you made in this step for the following steps.&nbsp;</p>
+    <p><strong>PCA (10 points)</strong><strong></strong></p>
+    <p>Now we'll look at another method in feature engineering, Principal Component Analysis (PCA).&nbsp;</p>
+    <ul>
+        <li>Perform PCA, keeping two components. Then, plot a 3d scatter plot where the x, y axes correspond to the two
+            components and the z axis corresponds to the target variable. Interpret this plot.</li>
+        <li>Perform PCA for the following number of components: 10, 20, 30, 40.&nbsp;</li>
+        <li>Choose one model that you used from Milestone 1. For each PCA-transformed version of the dataset, perform k
+            cross-validation on the data with the model. Compare the performances between each version and the original
+            standardized dataset.&nbsp;</li>
+    </ul>
+    <p><strong>Submission</strong></p>
+    <p>You will submit your code via your team GitHub repository and your report via Gradescope. Be sure to write your
+        team's name on the written report you submit on Gradescope, and be sure to submit as one group!</p>
+    <p>Your Github team repository creation link will be added here:</p>
+    <p>All you have to do for the Github repos to be graded is to push your code before the deadline so that we can
+        grade it according to completion. Just make sure to create 1 repo for your team. We'll grade based on your last
+        version before the deadline (including the 3-day extension). Ideally, we recommend using a Jupyter notebook for
+        the code, but using just Python is okay. Using other programming languages is also permitted, but not
+        recommended.</p>
+    <p>For the report, we are looking for a typeset document to be submitted to Gradescope. The corresponding
+        assignments will be available on Gradescope soon, where you'll submit the reports as if you were submitting one
+        of the written homework. However, unlike the written homework, we
+        will&nbsp;<strong>not</strong><span>&nbsp;</span>accept handwritten documents. Ideally, we recommend using a
+        LaTeX typeset pdf document, but using any other word processor is okay.</p>
+</div>
